@@ -1,4 +1,4 @@
-package eu.webdude.deadlock;
+package eu.webdude.multithreading.deadlock;
 
 public class RunningA {
 
