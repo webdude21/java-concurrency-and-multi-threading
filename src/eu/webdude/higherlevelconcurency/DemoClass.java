@@ -5,7 +5,7 @@ import java.util.concurrent.*;
 
 public class DemoClass {
 
-    public static final int TEST_BOUND = 1_000_000;
+    private static final int TEST_BOUND = 1_000_000;
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ThreadSafeSingleton threadSafeSingleton = ThreadSafeSingleton.getInstance();
