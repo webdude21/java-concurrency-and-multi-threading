@@ -10,8 +10,8 @@ import java.util.stream.Stream;
 public class ParallelFindPrimesWithBarrier {
 
     private static final int SUB_TASK_COUNT = 4;
-    private static final int MAX_PRIME_NUMBER = 100_000_000;
-    private static CyclicBarrier cyclicBarrier = new CyclicBarrier(SUB_TASK_COUNT);
+    private static final int MAX_PRIME_NUMBER = 1_000_000;
+    private static CyclicBarrier cyclicBarrier = new CyclicBarrier(SUB_TASK_COUNT, () -> System.out.println("Barrier opened!"));
 
     public static void main(String[] args) throws InterruptedException {
         List<Callable<List<Integer>>> callables = new ArrayList<>();
@@ -23,6 +23,8 @@ public class ParallelFindPrimesWithBarrier {
         }
 
         ExecutorService executorService = Executors.newFixedThreadPool(SUB_TASK_COUNT);
+
+        System.out.println("Reached Here");
 
         executorService.invokeAll(callables)
                 .stream()
