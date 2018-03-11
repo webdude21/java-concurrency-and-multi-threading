@@ -34,7 +34,6 @@ public class ParallelFindPrimesWithBarrier {
                         return Stream.empty();
                     }
                 })
-                .sorted()
                 .forEach(System.out::println);
     }
 
