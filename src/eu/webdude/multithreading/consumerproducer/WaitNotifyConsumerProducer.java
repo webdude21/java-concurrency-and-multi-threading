@@ -45,7 +45,7 @@ public class WaitNotifyConsumerProducer {
     class Producer {
         void produce() throws InterruptedException {
             synchronized (lock) {
-                if (isFull(buffer)) {
+                while (isFull(buffer)) {
                     lock.wait();
                 }
 
@@ -63,7 +63,7 @@ public class WaitNotifyConsumerProducer {
     class Consumer {
         void consume() throws InterruptedException {
             synchronized (lock) {
-                if (isEmpty(buffer)) {
+                while (isEmpty(buffer)) {
                     lock.wait();
                 }
 
